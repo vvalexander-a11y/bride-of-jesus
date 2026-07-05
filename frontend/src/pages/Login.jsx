@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useLang } from '../context/LangContext'
+import doveImage from '../assets/pingue.png'
 
 function Login() {
   const [password, setPassword] = useState('')
@@ -9,16 +10,14 @@ function Login() {
   const [loading, setLoading] = useState(false)
   const { lang } = useLang()
   const navigate = useNavigate()
-
   const t = {
     en: { title: 'Members Area', subtitle: 'Enter congregation password', placeholder: 'Password', button: 'Enter', error: 'Incorrect password' },
     ru: { title: 'Для прихожан', subtitle: 'Введите пароль общины', placeholder: 'Пароль', button: 'Войти', error: 'Неверный пароль' },
     he: { title: 'אזור חברי הקהילה', subtitle: 'הכנס סיסמת קהילה', placeholder: 'סיסמה', button: 'כניסה', error: 'סיסמה שגויה' },
   }
-
   const T = t[lang]
 
-async function handleSubmit() {
+  async function handleSubmit() {
     setLoading(true)
     setError(false)
     try {
@@ -30,7 +29,6 @@ async function handleSubmit() {
     }
     setLoading(false)
   }
-
   return (
     <div style={{
       minHeight: '100vh', background: '#faf7f2',
@@ -42,17 +40,15 @@ async function handleSubmit() {
         textAlign: 'center', boxShadow: '0 4px 24px rgba(201,168,76,0.15)'
       }}>
         <div style={{ marginBottom: '1.5rem' }}>
-          <img src="/src/assets/pingue.png" alt="dove" style={{
-  width: '100px', height: '100px', objectFit: 'contain',
-  mixBlendMode: 'multiply', opacity: 1
-}} />
+          <img src={doveImage} alt="dove" style={{
+            width: '100px', height: '100px', objectFit: 'contain',
+            mixBlendMode: 'multiply', opacity: 1
+          }} />
         </div>
-
         <h1 style={{ fontFamily: 'Playfair Display, serif', color: '#3d2b0d', fontSize: '1.8rem', marginBottom: '0.5rem' }}>
           {T.title}
         </h1>
         <p style={{ color: '#8a6a1f', marginBottom: '2rem' }}>{T.subtitle}</p>
-
         <input
           type="password"
           value={password}
@@ -67,11 +63,9 @@ async function handleSubmit() {
             textAlign: lang === 'he' ? 'right' : 'left'
           }}
         />
-
         {error && (
           <p style={{ color: '#c0392b', marginBottom: '1rem', fontSize: '0.9rem' }}>{T.error}</p>
         )}
-
         <button
           onClick={handleSubmit}
           disabled={loading}
@@ -89,5 +83,4 @@ async function handleSubmit() {
     </div>
   )
 }
-
 export default Login

@@ -10,8 +10,10 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-insecure-key')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
 ALLOWED_HOSTS += ['film-radiance-failing.ngrok-free.dev']
+
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 USE_X_FORWARDED_HOST = True
+
 CONGREGATION_PASSWORD = os.getenv('CONGREGATION_PASSWORD', '')
 
 INSTALLED_APPS = [
@@ -78,6 +80,7 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
@@ -88,5 +91,10 @@ CORS_ALLOW_CREDENTIALS = True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [],
+    'DEFAULT_PERMISSION_CLASSES': [],
+}
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

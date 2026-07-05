@@ -1,0 +1,35 @@
+Вот шпаргалка — сохрани её куда-нибудь:
+
+---
+
+**🖥 Терминал 1 — Django:**
+```bash
+cd D:\bride-of-jesus
+venv\Scripts\activate
+python manage.py runserver
+```
+
+**⚡ Терминал 2 — Vite (нажми + в терминале):**
+```bash
+cd D:\bride-of-jesus\frontend
+npm run dev
+```
+admin
+more1357
+TH^z9F3G/uRz#!c
+hetzner
+bride jesus - More2012!
+shalomafula1
+shalomafula23
+More2012secure
+
+_____
+admin
+admin@afula-messianic.org
+MainAdmin123
+
+**🌐 Сайт:** `http://localhost:5173`
+**⚙️ Админка:** `/admin`
+
+---
+

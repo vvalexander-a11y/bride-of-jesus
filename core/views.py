@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from django.conf import settings
 from django.core import signing
 from django.core.cache import cache
+from django.db.models import Q
 import secrets
 from .models import Article, Link, GalleryAccessRequest, Photo, DailyVerse, FAQ, Talent, LeadershipPhoto
 
@@ -97,7 +98,10 @@ class PhotoListView(APIView):
             GalleryAccessRequest.objects.get(token=token, status='approved')
         except GalleryAccessRequest.DoesNotExist:
             return Response({'error': 'Unauthorized'}, status=403)
-        photos = Photo.objects.filter(is_published=True).select_related('album')
+        photos = Photo.objects.filter(
+            Q(album__isnull=True) | Q(album__is_published=True),
+            is_published=True,
+        ).select_related('album')
         data = []
         for p in photos:
             data.append({
@@ -111,6 +115,8 @@ class PhotoListView(APIView):
                 'album_title_en': p.album.title_en if p.album else None,
                 'album_title_ru': p.album.title_ru if p.album else None,
                 'album_title_he': p.album.title_he if p.album else None,
+                'album_date': p.album.date if p.album else None,
+                'album_cover': request.build_absolute_uri(p.album.cover.url) if p.album and p.album.cover else None,
             })
         return Response(data)
 

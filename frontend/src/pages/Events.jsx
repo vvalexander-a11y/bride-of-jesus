@@ -11,6 +11,7 @@ function Events() {
   const [photos, setPhotos] = useState([])
   const [selected, setSelected] = useState(null)
   const [openAlbum, setOpenAlbum] = useState(null)
+  const [selectedYear, setSelectedYear] = useState('all')
   const [galleryStep, setGalleryStep] = useState('request')
   const [name, setName] = useState('')
   const [token, setToken] = useState(() => localStorage.getItem('gallery_token') || '')
@@ -37,6 +38,7 @@ function Events() {
       otherPhotos: 'Other Photos',
       backToAlbums: '← Back to Albums',
       photoOne: 'photo', photoMany: 'photos',
+      allYears: 'All Years',
     },
     ru: {
       events: 'События', gallery: 'Галерея', prayers: 'Молитвенные просьбы', talents: 'Таланты',
@@ -57,6 +59,7 @@ function Events() {
       otherPhotos: 'Другие фото',
       backToAlbums: '← Назад к альбомам',
       photoOne: 'фото', photoMany: 'фото',
+      allYears: 'Все годы',
     },
     he: {
       events: 'אירועים', gallery: 'גלריה', prayers: 'בקשות תפילה', talents: 'כשרונות',
@@ -77,6 +80,7 @@ function Events() {
       otherPhotos: 'תמונות נוספות',
       backToAlbums: '→ חזרה לאלבומים',
       photoOne: 'תמונה', photoMany: 'תמונות',
+      allYears: 'כל השנים',
     },
   }
 
@@ -161,7 +165,11 @@ function Events() {
       if (!group) {
         const isOther = !p.album_id
         const title = isOther ? T.otherPhotos : (p['album_title_' + lang] || p.album_title_en)
-        group = { key, title, photos: [], isOther }
+        group = {
+          key, title, photos: [], isOther,
+          date: isOther ? null : p.album_date,
+          cover: isOther ? null : p.album_cover,
+        }
         byAlbum.set(key, group)
         groups.push(group)
       }
@@ -175,11 +183,30 @@ function Events() {
       return maxB - maxA
     })
     if (other) albums.push(other)
-    return albums.map(g => ({ ...g, cover: g.photos[0]?.image }))
+    return albums.map(g => ({ ...g, cover: g.cover || g.photos[0]?.image }))
+  }
+
+  function getAvailableYears(albums) {
+    const years = new Set()
+    for (const a of albums) {
+      if (a.date) years.add(new Date(a.date).getFullYear())
+    }
+    return Array.from(years).sort((a, b) => b - a)
+  }
+
+  function filterAlbumsByYear(albums, year) {
+    if (year === 'all') return albums
+    return albums.filter(a => !a.isOther && a.date && new Date(a.date).getFullYear() === Number(year))
   }
 
   function formatPhotoCount(n) {
     return `${n} ${n === 1 ? T.photoOne : T.photoMany}`
+  }
+
+  function formatDate(dateStr) {
+    if (!dateStr) return null
+    const locale = lang === 'ru' ? 'ru' : lang === 'he' ? 'he' : 'en'
+    return new Date(dateStr).toLocaleDateString(locale)
   }
 
   const tabs = [
@@ -421,34 +448,54 @@ function Events() {
             </div>
           )}
 
-          {galleryStep === 'gallery' && (
+          {galleryStep === 'gallery' && (() => {
+            const allAlbums = buildAlbums(photos)
+            const years = getAvailableYears(allAlbums)
+            const visibleAlbums = filterAlbumsByYear(allAlbums, selectedYear)
+            return (
             <>
               {photos.length === 0 && <p style={{ color: '#8a6a1f' }}>{T.noPhotos}</p>}
 
               {photos.length > 0 && openAlbum === null && (
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1.5rem' }}>
-                  {buildAlbums(photos).map(album => (
-                    <div key={album.key} onClick={() => setOpenAlbum(album.key)} style={{
-                      cursor: 'pointer', borderRadius: '8px', overflow: 'hidden',
-                      border: '1px solid #e8d5a3', background: 'white',
-                      boxShadow: '0 2px 12px rgba(201,168,76,0.1)',
-                      transition: 'transform 0.2s, box-shadow 0.2s'
-                    }}
-                      onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.02)'; e.currentTarget.style.boxShadow = '0 4px 20px rgba(201,168,76,0.25)' }}
-                      onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 2px 12px rgba(201,168,76,0.1)' }}
-                    >
-                      <img src={album.cover} alt={album.title} style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
-                      <div style={{ padding: '0.8rem 1rem' }}>
-                        <div style={{ color: '#3d2b0d', fontSize: '0.95rem', fontFamily: 'Playfair Display, serif' }}>{album.title}</div>
-                        <div style={{ color: '#8a6a1f', fontSize: '0.8rem', marginTop: '4px' }}>{formatPhotoCount(album.photos.length)}</div>
-                      </div>
+                <>
+                  {years.length > 0 && (
+                    <div style={{ marginBottom: '1.5rem' }}>
+                      <select value={selectedYear} onChange={e => setSelectedYear(e.target.value)} style={{
+                        padding: '0.6rem 1rem', background: '#faf7f2', border: '1px solid #c9a84c',
+                        borderRadius: '6px', color: '#2a1e08', fontSize: '0.95rem', outline: 'none', cursor: 'pointer'
+                      }}>
+                        <option value="all">{T.allYears}</option>
+                        {years.map(y => <option key={y} value={y}>{y}</option>)}
+                      </select>
                     </div>
-                  ))}
-                </div>
+                  )}
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1.5rem' }}>
+                    {visibleAlbums.map(album => (
+                      <div key={album.key} onClick={() => setOpenAlbum(album.key)} style={{
+                        cursor: 'pointer', borderRadius: '8px', overflow: 'hidden',
+                        border: '1px solid #e8d5a3', background: 'white',
+                        boxShadow: '0 2px 12px rgba(201,168,76,0.1)',
+                        transition: 'transform 0.2s, box-shadow 0.2s'
+                      }}
+                        onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.02)'; e.currentTarget.style.boxShadow = '0 4px 20px rgba(201,168,76,0.25)' }}
+                        onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 2px 12px rgba(201,168,76,0.1)' }}
+                      >
+                        <img src={album.cover} alt={album.title} style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
+                        <div style={{ padding: '0.8rem 1rem' }}>
+                          <div style={{ color: '#3d2b0d', fontSize: '0.95rem', fontFamily: 'Playfair Display, serif' }}>{album.title}</div>
+                          {formatDate(album.date) && (
+                            <div style={{ color: '#8a6a1f', fontSize: '0.8rem', marginTop: '4px' }}>{formatDate(album.date)}</div>
+                          )}
+                          <div style={{ color: '#8a6a1f', fontSize: '0.8rem', marginTop: '2px' }}>{formatPhotoCount(album.photos.length)}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </>
               )}
 
               {openAlbum !== null && (() => {
-                const album = buildAlbums(photos).find(a => a.key === openAlbum)
+                const album = allAlbums.find(a => a.key === openAlbum)
                 if (!album) return null
                 return (
                   <div>
@@ -458,6 +505,9 @@ function Events() {
                         padding: '8px 20px', cursor: 'pointer', borderRadius: '4px', fontSize: '0.9rem'
                       }}>{T.backToAlbums}</button>
                       <h2 style={{ fontFamily: 'Playfair Display, serif', color: '#3d2b0d', fontSize: '1.5rem', margin: 0 }}>{album.title}</h2>
+                      {formatDate(album.date) && (
+                        <span style={{ color: '#8a6a1f', fontSize: '0.9rem' }}>{formatDate(album.date)}</span>
+                      )}
                     </div>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1.5rem' }}>
                       {album.photos.map(p => (
@@ -505,7 +555,8 @@ function Events() {
                 </div>
               )}
             </>
-          )}
+            )
+          })()}
         </div>
       )}
     </div>

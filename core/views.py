@@ -97,7 +97,7 @@ class PhotoListView(APIView):
             GalleryAccessRequest.objects.get(token=token, status='approved')
         except GalleryAccessRequest.DoesNotExist:
             return Response({'error': 'Unauthorized'}, status=403)
-        photos = Photo.objects.filter(is_published=True)
+        photos = Photo.objects.filter(is_published=True).select_related('album')
         data = []
         for p in photos:
             data.append({
@@ -107,6 +107,10 @@ class PhotoListView(APIView):
                 'title_he': p.title_he,
                 'image': request.build_absolute_uri(p.image.url),
                 'date': p.date,
+                'album_id': p.album_id,
+                'album_title_en': p.album.title_en if p.album else None,
+                'album_title_ru': p.album.title_ru if p.album else None,
+                'album_title_he': p.album.title_he if p.album else None,
             })
         return Response(data)
 

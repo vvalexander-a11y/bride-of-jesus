@@ -23,6 +23,13 @@ shalomafula1
 shalomafula23
 More2012secure
 
+Твой рабочий процесс деплоя теперь (запиши где-нибудь):
+
+Правишь код локально
+Windows: git add . → git commit -m "что сделал" → git push
+Сервер: cd /root/bride-of-jesus → git pull
+Если менял фронтенд: cd frontend → npm run build
+Если менял бэкенд: systemctl restart gunicorn
 _____
 admin
 admin@afula-messianic.org

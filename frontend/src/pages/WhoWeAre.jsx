@@ -8,7 +8,7 @@ function WhoWeAre() {
     en: {
       label: "Who We Are",
       title: "A community of faith, prayer & fellowship",
-      about: "We are a Messianic congregation, believing in God and His Son Yeshua (Psalm 2:7), our Messiah and Lord (John 3:16). A group of families and individuals — Jews and non-Jews — meeting regularly, usually on Saturday mornings.",
+      about: "We are a Messianic congregation in Afula, Israel, believing in God and His Son Yeshua (Psalm 2:7), our Messiah and Lord (John 3:16). A group of families and individuals — Jews and non-Jews — meeting regularly, usually on Saturday mornings.",
       worship: "Worship", worshipDesc: "We gather to praise and worship the Lord together, in faith and joy.",
       bible: "Bible Study", bibleDesc: "In-depth study of the Tanakh and the New Testament — the living Word of God.",
       prayer: "Prayer Together", prayerDesc: "We pray together, listen, and bring one another's needs before the Lord.",
@@ -17,7 +17,7 @@ function WhoWeAre() {
     ru: {
       label: "О нас",
       title: "Община веры, молитвы и общения",
-      about: "Мы — мессианская община, верующая в Бога и в Его Сына Йешуа (Псалом 2:7), нашего Мессию и Господа (Иоанна 3:16). Группа семей и верующих — евреи и неевреи — которые регулярно собираются в субботу утром.",
+      about: "Мы — мессианская община в Афуле, Израиль, верующая в Бога и в Его Сына Йешуа (Псалом 2:7), нашего Мессию и Господа (Иоанна 3:16). Группа семей и верующих — евреи и неевреи — которые регулярно собираются в субботу утром.",
       worship: "Поклонение", worshipDesc: "Мы собираемся, чтобы вместе прославлять Господа с верой и радостью.",
       bible: "Изучение Библии", bibleDesc: "Глубокое изучение Танаха и Нового Завета — живого Слова Бога.",
       prayer: "Совместная молитва", prayerDesc: "Молимся вместе и несём нужды друг друга пред Господом.",
@@ -26,7 +26,7 @@ function WhoWeAre() {
     he: {
       label: "מי אנחנו",
       title: "קהילה שמאמינה, מתפללת ומתחברת",
-      about: "אנחנו קהילה משיחית, המאמינה באלוהים ובבנו ישוע (תהילים ב׳:7), משיחנו ואדוננו (יוחנן ג׳:16). קבוצה של משפחות ורווקים, יהודים ולא יהודים, הנפגשים בדרך כלל שבת בבוקר.",
+      about: "אנחנו קהילה משיחית בעפולה, ישראל, המאמינה באלוהים ובבנו ישוע (תהילים ב׳:7), משיחנו ואדוננו (יוחנן ג׳:16). קבוצה של משפחות ורווקים, יהודים ולא יהודים, הנפגשים בדרך כלל שבת בבוקר.",
       worship: "עבודת ה׳", worshipDesc: "אנחנו מתכנסים כדי לשבח ולעבוד את ה׳ יחד.",
       bible: "לימוד הכתובים", bibleDesc: "לימוד מעמיק של התנ״ך והברית החדשה.",
       prayer: "תפילה משותפת", prayerDesc: "אנחנו מתפללים יחד ומפקידים אחד את צרכי השני לפני ה׳.",
@@ -35,7 +35,7 @@ function WhoWeAre() {
     es: {
       label: "Quiénes Somos",
       title: "Una comunidad de fe, oración y comunión",
-      about: "Somos una congregación mesiánica que cree en Dios y en su Hijo Yeshúa (Salmo 2:7), nuestro Mesías y Señor (Juan 3:16). Un grupo de familias y personas — judíos y no judíos — que se reúnen habitualmente los sábados por la mañana.",
+      about: "Somos una congregación mesiánica en Afula, Israel, que cree en Dios y en su Hijo Yeshúa (Salmo 2:7), nuestro Mesías y Señor (Juan 3:16). Un grupo de familias y personas — judíos y no judíos — que se reúnen habitualmente los sábados por la mañana.",
       worship: "Adoración", worshipDesc: "Nos reunimos para alabar y adorar juntos al Señor, con fe y alegría.",
       bible: "Estudio Bíblico", bibleDesc: "Estudio profundo del Tanaj y del Nuevo Testamento — la Palabra viva de Dios.",
       prayer: "Oración en Comunidad", prayerDesc: "Oramos juntos, nos escuchamos y presentamos ante el Señor las necesidades de cada uno.",

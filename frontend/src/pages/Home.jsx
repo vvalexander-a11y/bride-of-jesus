@@ -17,21 +17,25 @@ function Home() {
       tagline: "A Messianic congregation in Afula, Israel — Jews and non-Jews gathering to worship, study, pray and walk together in faith.",
       verse1: '"For God so loved the world, that he gave his only Son"',
       verse1ref: "John 3:16",
+      city: "Afula",
     },
     ru: {
       tagline: "Мессианская община в Афуле, Израиль — евреи и неевреи, собирающиеся для поклонения, изучения Писания и молитвы.",
       verse1: '«Ибо так возлюбил Бог мир, что отдал Сына Своего единородного»',
       verse1ref: "Иоанна 3:16",
+      city: "Афула",
     },
     he: {
       tagline: "קהילה משיחית בעפולה, ישראל — יהודים ולא יהודים הנפגשים לעבודת ה׳, לימוד ותפילה.",
       verse1: '״כִּי-כָּכָה אָהַב אֱלֹהִים אֶת-הָעוֹלָם, עַד-כִּי נָתַן אֶת-בְּנוֹ יְחִידוֹ״',
       verse1ref: "יוחנן ג׳:טז",
+      city: "עפולה",
     },
     es: {
       tagline: "Una congregación mesiánica en Afula, Israel — judíos y no judíos reunidos para adorar, estudiar, orar y caminar juntos en la fe.",
       verse1: '"Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito"',
       verse1ref: "Juan 3:16",
+      city: "Afula",
     }
   }
 
@@ -155,7 +159,7 @@ function Home() {
           <div className="congregation-name-he">כלת ישוע</div>
           <div className="congregation-name-en">Bride of Jesus</div>
           <div className="congregation-name-ru">Невеста Иисуса</div>
-          <div className="city-tag">Afula · עפולה · Афула</div>
+          <div className="city-tag">{T.city}</div>
           <div className="divider-gold"></div>
           <p className="hero-tagline">{T.tagline}</p>
         </div>

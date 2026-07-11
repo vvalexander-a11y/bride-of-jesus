@@ -10,6 +10,7 @@ function Events() {
   const [talents, setTalents] = useState([])
   const [photos, setPhotos] = useState([])
   const [selected, setSelected] = useState(null)
+  const [openAlbum, setOpenAlbum] = useState(null)
   const [galleryStep, setGalleryStep] = useState('request')
   const [name, setName] = useState('')
   const [token, setToken] = useState(() => localStorage.getItem('gallery_token') || '')
@@ -34,6 +35,8 @@ function Events() {
       anonymous: 'Anonymous',
       yaldeiYa: 'Yaldei Ya — Kids Ministry',
       otherPhotos: 'Other Photos',
+      backToAlbums: '← Back to Albums',
+      photoOne: 'photo', photoMany: 'photos',
     },
     ru: {
       events: 'События', gallery: 'Галерея', prayers: 'Молитвенные просьбы', talents: 'Таланты',
@@ -52,6 +55,8 @@ function Events() {
       anonymous: 'Анонимно',
       yaldeiYa: 'Ялдей Я — Детское служение',
       otherPhotos: 'Другие фото',
+      backToAlbums: '← Назад к альбомам',
+      photoOne: 'фото', photoMany: 'фото',
     },
     he: {
       events: 'אירועים', gallery: 'גלריה', prayers: 'בקשות תפילה', talents: 'כשרונות',
@@ -70,6 +75,8 @@ function Events() {
       anonymous: 'אנונימי',
       yaldeiYa: 'ילדי יה — שירות ילדים',
       otherPhotos: 'תמונות נוספות',
+      backToAlbums: '→ חזרה לאלבומים',
+      photoOne: 'תמונה', photoMany: 'תמונות',
     },
   }
 
@@ -91,6 +98,11 @@ function Events() {
   useEffect(() => {
     if (token) checkGalleryAccess(token)
   }, [])
+
+  function selectTab(key) {
+    setTab(key)
+    setOpenAlbum(null)
+  }
 
   async function checkGalleryAccess(tk) {
     try {
@@ -140,23 +152,34 @@ function Events() {
   function getDesc(e) { return e['description_' + lang] || e.description_en }
   function getPrayerText(p) { return p['text_' + lang] || p.text_en || p.text_ru || p.text_he }
 
-  function groupPhotosByAlbum(list) {
+  function buildAlbums(list) {
     const groups = []
     const byAlbum = new Map()
     for (const p of list) {
       const key = p.album_id || 'none'
       let group = byAlbum.get(key)
       if (!group) {
-        const title = p.album_id
-          ? (p['album_title_' + lang] || p.album_title_en)
-          : T.otherPhotos
-        group = { key, title, photos: [] }
+        const isOther = !p.album_id
+        const title = isOther ? T.otherPhotos : (p['album_title_' + lang] || p.album_title_en)
+        group = { key, title, photos: [], isOther }
         byAlbum.set(key, group)
         groups.push(group)
       }
       group.photos.push(p)
     }
-    return groups
+    const albums = groups.filter(g => !g.isOther)
+    const other = groups.find(g => g.isOther)
+    albums.sort((a, b) => {
+      const maxA = Math.max(...a.photos.map(p => p.id))
+      const maxB = Math.max(...b.photos.map(p => p.id))
+      return maxB - maxA
+    })
+    if (other) albums.push(other)
+    return albums.map(g => ({ ...g, cover: g.photos[0]?.image }))
+  }
+
+  function formatPhotoCount(n) {
+    return `${n} ${n === 1 ? T.photoOne : T.photoMany}`
   }
 
   const tabs = [
@@ -246,7 +269,7 @@ function Events() {
           <button
             key={item.key}
             className={`events-tab-btn${tab === item.key ? ' active' : ''}`}
-            onClick={() => setTab(item.key)}
+            onClick={() => selectTab(item.key)}
           >
             <span>{item.icon}</span>
             <span>{item.label}</span>
@@ -401,34 +424,65 @@ function Events() {
           {galleryStep === 'gallery' && (
             <>
               {photos.length === 0 && <p style={{ color: '#8a6a1f' }}>{T.noPhotos}</p>}
-              {groupPhotosByAlbum(photos).map(group => (
-                <div key={group.key} style={{ marginBottom: '2.5rem' }}>
-                  {group.title && (
-                    <h2 style={{ fontFamily: 'Playfair Display, serif', color: '#3d2b0d', fontSize: '1.5rem', marginBottom: '1rem' }}>{group.title}</h2>
-                  )}
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1.5rem' }}>
-                    {group.photos.map(p => (
-                      <div key={p.id} onClick={() => setSelected(p)} style={{
-                        cursor: 'pointer', borderRadius: '8px', overflow: 'hidden',
-                        border: '1px solid #e8d5a3', background: 'white',
-                        boxShadow: '0 2px 12px rgba(201,168,76,0.1)',
-                        transition: 'transform 0.2s, box-shadow 0.2s'
-                      }}
-                        onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.02)'; e.currentTarget.style.boxShadow = '0 4px 20px rgba(201,168,76,0.25)' }}
-                        onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 2px 12px rgba(201,168,76,0.1)' }}
-                      >
-                        <img src={p.image} alt={getTitle(p)} style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
-                        {getTitle(p) && (
-                          <div style={{ padding: '0.8rem 1rem', color: '#3d2b0d', fontSize: '0.9rem', fontFamily: 'Playfair Display, serif' }}>{getTitle(p)}</div>
-                        )}
-                        {p.date && (
-                          <div style={{ padding: '0 1rem 0.8rem', color: '#8a6a1f', fontSize: '0.8rem' }}>{p.date}</div>
-                        )}
+
+              {photos.length > 0 && openAlbum === null && (
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1.5rem' }}>
+                  {buildAlbums(photos).map(album => (
+                    <div key={album.key} onClick={() => setOpenAlbum(album.key)} style={{
+                      cursor: 'pointer', borderRadius: '8px', overflow: 'hidden',
+                      border: '1px solid #e8d5a3', background: 'white',
+                      boxShadow: '0 2px 12px rgba(201,168,76,0.1)',
+                      transition: 'transform 0.2s, box-shadow 0.2s'
+                    }}
+                      onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.02)'; e.currentTarget.style.boxShadow = '0 4px 20px rgba(201,168,76,0.25)' }}
+                      onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 2px 12px rgba(201,168,76,0.1)' }}
+                    >
+                      <img src={album.cover} alt={album.title} style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
+                      <div style={{ padding: '0.8rem 1rem' }}>
+                        <div style={{ color: '#3d2b0d', fontSize: '0.95rem', fontFamily: 'Playfair Display, serif' }}>{album.title}</div>
+                        <div style={{ color: '#8a6a1f', fontSize: '0.8rem', marginTop: '4px' }}>{formatPhotoCount(album.photos.length)}</div>
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              )}
+
+              {openAlbum !== null && (() => {
+                const album = buildAlbums(photos).find(a => a.key === openAlbum)
+                if (!album) return null
+                return (
+                  <div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
+                      <button onClick={() => setOpenAlbum(null)} style={{
+                        background: 'transparent', border: '1px solid #c9a84c', color: '#c9a84c',
+                        padding: '8px 20px', cursor: 'pointer', borderRadius: '4px', fontSize: '0.9rem'
+                      }}>{T.backToAlbums}</button>
+                      <h2 style={{ fontFamily: 'Playfair Display, serif', color: '#3d2b0d', fontSize: '1.5rem', margin: 0 }}>{album.title}</h2>
+                    </div>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1.5rem' }}>
+                      {album.photos.map(p => (
+                        <div key={p.id} onClick={() => setSelected(p)} style={{
+                          cursor: 'pointer', borderRadius: '8px', overflow: 'hidden',
+                          border: '1px solid #e8d5a3', background: 'white',
+                          boxShadow: '0 2px 12px rgba(201,168,76,0.1)',
+                          transition: 'transform 0.2s, box-shadow 0.2s'
+                        }}
+                          onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.02)'; e.currentTarget.style.boxShadow = '0 4px 20px rgba(201,168,76,0.25)' }}
+                          onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 2px 12px rgba(201,168,76,0.1)' }}
+                        >
+                          <img src={p.image} alt={getTitle(p)} style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
+                          {getTitle(p) && (
+                            <div style={{ padding: '0.8rem 1rem', color: '#3d2b0d', fontSize: '0.9rem', fontFamily: 'Playfair Display, serif' }}>{getTitle(p)}</div>
+                          )}
+                          {p.date && (
+                            <div style={{ padding: '0 1rem 0.8rem', color: '#8a6a1f', fontSize: '0.8rem' }}>{p.date}</div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )
+              })()}
 
               {selected && (
                 <div onClick={() => setSelected(null)} style={{

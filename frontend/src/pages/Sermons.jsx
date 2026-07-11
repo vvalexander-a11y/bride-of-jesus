@@ -22,6 +22,7 @@ function Sermons() {
     en: { title: 'Sermons', noSermons: 'No sermons yet.', read: 'Read', download: 'Download', watch: 'Watch', close: 'Close' },
     ru: { title: 'Проповеди', noSermons: 'Проповедей пока нет.', read: 'Читать', download: 'Скачать', watch: 'Смотреть', close: 'Закрыть' },
     he: { title: 'דרשות', noSermons: 'אין דרשות עדיין.', read: 'קרא', download: 'הורד', watch: 'צפה', close: 'סגור' },
+    es: { title: 'Sermones', noSermons: 'Aún no hay sermones.', read: 'Leer', download: 'Descargar', watch: 'Ver', close: 'Cerrar' },
   }
   const T = t[lang]
 

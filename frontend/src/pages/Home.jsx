@@ -10,6 +10,7 @@ function Home() {
     const browserLang = navigator.language.slice(0, 2)
     if (browserLang === 'ru') setLang('ru')
     else if (browserLang === 'he') setLang('he')
+    else if (browserLang === 'es') setLang('es')
     else setLang('en')
   }, [])
 
@@ -34,6 +35,11 @@ function Home() {
       tagline: "קהילה משיחית בעפולה, ישראל — יהודים ולא יהודים הנפגשים לעבודת ה׳, לימוד ותפילה.",
       verse1: '״כִּי-כָּכָה אָהַב אֱלֹהִים אֶת-הָעוֹלָם, עַד-כִּי נָתַן אֶת-בְּנוֹ יְחִידוֹ״',
       verse1ref: "יוחנן ג׳:טז",
+    },
+    es: {
+      tagline: "Una congregación mesiánica en Afula, Israel — judíos y no judíos reunidos para adorar, estudiar, orar y caminar juntos en la fe.",
+      verse1: '"Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito"',
+      verse1ref: "Juan 3:16",
     }
   }
 
@@ -166,7 +172,7 @@ function Home() {
 
       <section id="verse-strip">
         <div className="verse-label">
-          {lang === 'en' ? '— Verse of the Day —' : lang === 'ru' ? '— Стих дня —' : '— פסוק היום —'}
+          {lang === 'en' ? '— Verse of the Day —' : lang === 'ru' ? '— Стих дня —' : lang === 'he' ? '— פסוק היום —' : '— Versículo del Día —'}
         </div>
         <div className="verse-text">
           {verse ? (verse['text_' + lang] || verse.text_en) : T.verse1}

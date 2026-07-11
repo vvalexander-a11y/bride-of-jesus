@@ -31,6 +31,15 @@ function WhoWeAre() {
       bible: "לימוד הכתובים", bibleDesc: "לימוד מעמיק של התנ״ך והברית החדשה.",
       prayer: "תפילה משותפת", prayerDesc: "אנחנו מתפללים יחד ומפקידים אחד את צרכי השני לפני ה׳.",
       fellowship: "התחברות", fellowshipDesc: "קהילה חמה ומקבלת — כאן כולם מוזמנים.",
+    },
+    es: {
+      label: "Quiénes Somos",
+      title: "Una comunidad de fe, oración y comunión",
+      about: "Somos una congregación mesiánica que cree en Dios y en su Hijo Yeshúa (Salmo 2:7), nuestro Mesías y Señor (Juan 3:16). Un grupo de familias y personas — judíos y no judíos — que se reúnen habitualmente los sábados por la mañana.",
+      worship: "Adoración", worshipDesc: "Nos reunimos para alabar y adorar juntos al Señor, con fe y alegría.",
+      bible: "Estudio Bíblico", bibleDesc: "Estudio profundo del Tanaj y del Nuevo Testamento — la Palabra viva de Dios.",
+      prayer: "Oración en Comunidad", prayerDesc: "Oramos juntos, nos escuchamos y presentamos ante el Señor las necesidades de cada uno.",
+      fellowship: "Comunión", fellowshipDesc: "Una comunidad cálida y acogedora — todos son bienvenidos, sin importar su trasfondo.",
     }
   }
 

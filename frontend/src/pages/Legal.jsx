@@ -106,6 +106,40 @@ function Legal() {
 
       accessLevel: 'רמת נגישות נוכחית: תאימות חלקית לתקן ישראלי 5568 (רמה AA). אנו עובדים באופן מתמיד על שיפור.',
     },
+    es: {
+      title: 'Política de Privacidad y Accesibilidad',
+      lastUpdated: 'Última actualización: junio de 2026',
+
+      privacyTitle: 'Política de Privacidad',
+      p1: 'El sitio web de la congregación "Novia de Jesús" en Afula (en adelante, "el Sitio") es gestionado por la congregación mesiánica Novia de Jesús en Afula, Israel.',
+      p2: 'Nos comprometemos a proteger la privacidad de nuestros visitantes de acuerdo con la Ley Israelí de Protección de la Privacidad, 5741-1981.',
+
+      dataTitle: '¿Qué datos recopilamos?',
+      dataText: 'Este sitio no recopila datos personales de los visitantes en general. La sección de miembros requiere una contraseña compartida de la congregación — no se crean cuentas personales. La sección de la galería de fotos requiere un nombre y la aprobación de un administrador — este nombre se almacena únicamente con fines de gestión de acceso y no se comparte con terceros.',
+
+      cookiesTitle: 'Cookies',
+      cookiesText: 'Este sitio utiliza almacenamiento local mínimo (no cookies) para recordar tu preferencia de idioma y tu acceso a la congregación. No se utilizan cookies de seguimiento ni publicitarias.',
+
+      photosTitle: 'Fotos',
+      photosText: 'Las fotos de los miembros de la congregación se publican únicamente en la sección restringida de miembros, accesible solo para miembros aprobados. Si deseas que se elimine tu foto, contáctanos.',
+
+      contactTitle: 'Contacto',
+      contactText: 'Para cualquier solicitud relacionada con la privacidad, contáctanos en: info@afula-messianic.org o por teléfono: 055-299-8715.',
+
+      accessTitle: 'Declaración de Accesibilidad',
+      accessText: 'La congregación Novia de Jesús se compromete a hacer que su sitio web sea accesible para todas las personas, incluidas las personas con discapacidad, de acuerdo con la Ley Israelí de Igualdad de Derechos para Personas con Discapacidad, 5758-1998, y el Estándar Israelí 5568.',
+
+      accessFeatures: 'Funciones de accesibilidad en este sitio:',
+      feature1: 'Ajuste del tamaño de fuente disponible en las páginas de lectura de sermones',
+      feature2: 'El sitio admite visualización de derecha a izquierda (RTL) para el hebreo',
+      feature3: 'El sitio se puede navegar con el teclado',
+      feature4: 'El contraste de colores cumple con los estándares de accesibilidad',
+      feature5: 'El sitio es compatible con lectores de pantalla',
+
+      accessContact: 'Si encuentras algún problema de accesibilidad, contáctanos en info@afula-messianic.org y haremos lo posible por ayudarte.',
+
+      accessLevel: 'Nivel de accesibilidad actual: cumplimiento parcial del Estándar Israelí 5568 (nivel AA). Trabajamos continuamente para mejorar.',
+    },
   }
 
   const T = t[lang]

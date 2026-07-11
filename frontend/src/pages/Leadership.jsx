@@ -31,6 +31,12 @@ function Leadership() {
       title: "דוד · יוחנן · אלכס",
       message: "לא משנה איפה אתה נמצא במסע שלך, מה שהביא אותך לכאן — אתה מוזמן. אם אתה מחפש אמת, תקווה, בית לנשמה שלך — דע: ישוע אמיתי, הוא קרוב, והוא אוהב אותך. בוא כפי שאתה. יהיה לנו לכבוד ללכת יחד בדרך הזו.",
       names: "דוד · יוחנן · אלכס",
+    },
+    es: {
+      label: "Liderazgo de la Congregación",
+      title: "David · Yojanán · Alex",
+      message: "Dondequiera que estés en tu camino, sea lo que sea lo que te haya traído aquí — eres bienvenido. Si buscas la verdad, la esperanza, un hogar para tu alma, queremos que sepas: Yeshúa es real, está cerca, y te ama. Ven tal como eres. Sería un honor para nosotros caminar este camino junto a ti.",
+      names: "דוד · יוחנן · אלכס",
     }
   }
 

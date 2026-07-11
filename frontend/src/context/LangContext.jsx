@@ -7,6 +7,7 @@ export function LangProvider({ children }) {
     const browserLang = navigator.language.slice(0, 2)
     if (browserLang === 'ru') return 'ru'
     if (browserLang === 'he') return 'he'
+    if (browserLang === 'es') return 'es'
     return 'en'
   })
 

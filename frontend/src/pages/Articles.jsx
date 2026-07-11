@@ -18,12 +18,12 @@ function Articles() {
   return (
     <div style={{ minHeight: '100vh', background: '#faf7f2', color: '#2a1e08', padding: '4rem 8%' }}>
       <h1 style={{ fontFamily: 'Playfair Display, serif', color: '#3d2b0d', fontSize: '2.5rem', marginBottom: '3rem', borderBottom: '2px solid #c9a84c', paddingBottom: '1rem' }}>
-        {lang === 'en' ? 'Articles' : lang === 'ru' ? 'Статьи' : 'מאמרים'}
+        {lang === 'en' ? 'Articles' : lang === 'ru' ? 'Статьи' : lang === 'he' ? 'מאמרים' : 'Artículos'}
       </h1>
 
       {articles.length === 0 && (
         <p style={{ color: '#8a6a1f' }}>
-          {lang === 'en' ? 'No articles yet.' : lang === 'ru' ? 'Статей пока нет.' : 'אין מאמרים עדיין.'}
+          {lang === 'en' ? 'No articles yet.' : lang === 'ru' ? 'Статей пока нет.' : lang === 'he' ? 'אין מאמרים עדיין.' : 'Aún no hay artículos.'}
         </p>
       )}
 

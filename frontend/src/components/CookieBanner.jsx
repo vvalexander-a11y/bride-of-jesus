@@ -32,6 +32,11 @@ function CookieBanner() {
       accept: 'הבנתי',
       more: 'מדיניות פרטיות',
     },
+    es: {
+      text: 'Este sitio utiliza almacenamiento local para recordar tu preferencia de idioma y tu acceso a la sección de miembros. No se utilizan cookies de seguimiento ni publicitarias.',
+      accept: 'Entendido',
+      more: 'Política de Privacidad',
+    },
   }
 
   const T = t[lang]

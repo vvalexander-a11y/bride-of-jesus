@@ -16,12 +16,14 @@ function FAQ() {
   function getQuestion(f) { return f['question_' + lang] || f.question_en }
   function getAnswer(f) { return f['answer_' + lang] || f.answer_en }
 
-  const title = lang === 'en' ? 'Questions & Answers' : lang === 'ru' ? 'Вопросы и ответы' : 'שאלות ותשובות'
+  const title = lang === 'en' ? 'Questions & Answers' : lang === 'ru' ? 'Вопросы и ответы' : lang === 'he' ? 'שאלות ותשובות' : 'Preguntas y Respuestas'
   const subtitle = lang === 'en'
     ? 'Common questions about our faith and congregation'
     : lang === 'ru'
     ? 'Частые вопросы о нашей вере и общине'
-    : 'שאלות נפוצות על האמונה שלנו והקהילה'
+    : lang === 'he'
+    ? 'שאלות נפוצות על האמונה שלנו והקהילה'
+    : 'Preguntas frecuentes sobre nuestra fe y congregación'
 
   return (
     <div style={{ minHeight: '100vh', background: '#faf7f2', color: '#2a1e08', padding: '4rem 8%' }}>
@@ -50,7 +52,7 @@ function FAQ() {
 
       {faqs.length === 0 && (
         <p style={{ color: '#8a6a1f' }}>
-          {lang === 'en' ? 'No questions yet.' : lang === 'ru' ? 'Вопросов пока нет.' : 'אין שאלות עדיין.'}
+          {lang === 'en' ? 'No questions yet.' : lang === 'ru' ? 'Вопросов пока нет.' : lang === 'he' ? 'אין שאלות עדיין.' : 'Aún no hay preguntas.'}
         </p>
       )}
 

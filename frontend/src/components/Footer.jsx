@@ -8,6 +8,7 @@ function Footer() {
     en: { legal: 'Privacy Policy & Accessibility', rights: 'Bride of Jesus Congregation · Afula, Israel' },
     ru: { legal: 'Политика конфиденциальности и доступность', rights: 'Община «Невеста Иисуса» · Афула, Израиль' },
     he: { legal: 'מדיניות פרטיות ונגישות', rights: 'קהילת "כלת ישוע" · עפולה, ישראל' },
+    es: { legal: 'Política de Privacidad y Accesibilidad', rights: 'Congregación Novia de Jesús · Afula, Israel' },
   }
 
   const T = t[lang]

@@ -20,12 +20,14 @@ function Links() {
 
   const allLinks = links.length > 0 ? links : staticLinks
 
-  const title = lang === 'en' ? 'Useful Links' : lang === 'ru' ? 'Полезные ссылки' : 'קישורים שימושיים'
+  const title = lang === 'en' ? 'Useful Links' : lang === 'ru' ? 'Полезные ссылки' : lang === 'he' ? 'קישורים שימושיים' : 'Enlaces Útiles'
   const disclaimer = lang === 'en'
     ? 'We are not directly responsible for external content'
     : lang === 'ru'
     ? 'Мы не несём ответственности за внешний контент'
-    : 'אנחנו לא אחראים ישירות לתוכן האתרים הבאים'
+    : lang === 'he'
+    ? 'אנחנו לא אחראים ישירות לתוכן האתרים הבאים'
+    : 'No somos directamente responsables del contenido externo'
 
   return (
     <div style={{ minHeight: '100vh', background: '#faf7f2', color: '#2a1e08', padding: '4rem 8%' }}>

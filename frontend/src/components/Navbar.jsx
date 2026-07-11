@@ -24,6 +24,7 @@ function Navbar() {
     en: { home: 'Home', whoweare: 'Who We Are', leadership: 'Leadership', contact: 'Get in Touch', jesus: 'More About Jesus', members: 'Members' },
     ru: { home: 'Дом', whoweare: 'Кто мы', leadership: 'Руководство', contact: 'Связаться', jesus: 'Больше об Иисусе', members: 'Прихожанам' },
     he: { home: 'בית', whoweare: 'מי אנחנו', leadership: 'הנהגה', contact: 'צרו קשר', jesus: 'עוד על ישוע', members: 'חברי קהילה' },
+    es: { home: 'Inicio', whoweare: 'Quiénes Somos', leadership: 'Liderazgo', contact: 'Contacto', jesus: 'Más Sobre Jesús', members: 'Miembros' },
   }
 
   const t = labels[lang]
@@ -56,7 +57,7 @@ function Navbar() {
 
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
           <div style={{ display: 'flex', gap: '4px' }}>
-            {['en', 'ru', 'he'].map(l => (
+            {['en', 'ru', 'he', 'es'].map(l => (
               <button key={l} onClick={() => setLang(l)} style={{
                 background: lang === l ? '#8a6a1f' : 'transparent',
                 border: '1px solid #8a6a1f', color: '#e8cc7a',

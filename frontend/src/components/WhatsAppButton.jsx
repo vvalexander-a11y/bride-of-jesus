@@ -7,6 +7,7 @@ function WhatsAppButton() {
     en: 'Hello! I would like to know more about the congregation.',
     ru: 'Здравствуйте! Я хотел бы узнать больше об общине.',
     he: 'שלום! אשמח לדעת עוד על הקהילה.',
+    es: '¡Hola! Me gustaría saber más sobre la congregación.',
   }
 
   const phone = '972552998715'

@@ -28,6 +28,14 @@ function Contact() {
       meetings: "מפגשים בדרך כלל בשבת בבוקר",
       wantToVisit: "רוצים לבקר אותנו?",
       visitText: "נשמח לארח אתכם! צרו קשר בטלפון או בוואטסאפ ונשתף אתכם בכל הפרטים באופן אישי.",
+    },
+    es: {
+      label: "Contacto",
+      title: "Nos encantaría saber de ti",
+      contactDetails: "Datos de Contacto",
+      meetings: "Los encuentros suelen ser los sábados por la mañana",
+      wantToVisit: "¿Quieres visitarnos?",
+      visitText: "¡Nos encantaría darte la bienvenida! Escríbenos por teléfono o WhatsApp y te compartiremos todos los detalles personalmente.",
     }
   }
 

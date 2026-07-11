@@ -57,6 +57,20 @@ function AccessibilityWidget() {
       close: 'סגור',
       hide: 'הסתר כפתור',
     },
+    es: {
+      title: 'Accesibilidad',
+      fontSize: 'Tamaño de Fuente',
+      contrast: 'Alto Contraste',
+      links: 'Subrayar Enlaces',
+      cursor: 'Cursor Grande',
+      grayscale: 'Escala de Grises',
+      readableFont: 'Fuente Legible',
+      lineSpacing: 'Espaciado de Línea',
+      stopAnimations: 'Detener Animaciones',
+      reset: 'Restablecer',
+      close: 'Cerrar',
+      hide: 'Ocultar botón',
+    },
   }
 
   const T = t[lang]

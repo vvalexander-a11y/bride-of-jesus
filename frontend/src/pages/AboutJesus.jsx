@@ -25,6 +25,13 @@ function AboutJesus() {
       intro: "קראו את התנ״ך ואת הברית החדשה — דבר האלוהים החי. להלן משאבים מומלצים.",
       disclaimer: "אנחנו לא אחראים ישירות לתוכן האתרים הבאים",
       readBible: "קראו את התנ״ך ואת הברית החדשה 📖",
+    },
+    es: {
+      label: "Más Sobre Jesús",
+      title: "¿Quieres saber más sobre la fe?",
+      intro: "Lee la Biblia y el Nuevo Testamento — la Palabra viva de Dios. Aquí tienes algunos recursos de confianza para explorar.",
+      disclaimer: "No somos directamente responsables del contenido externo",
+      readBible: "Lee la Biblia y el Nuevo Testamento 📖",
     }
   }
 

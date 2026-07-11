@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://afula-messianic.org/</loc>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="he" href="https://afula-messianic.org/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://afula-messianic.org/en" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://afula-messianic.org/ru" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://afula-messianic.org/es" />
+  </url>
+  <url>
+    <loc>https://afula-messianic.org/en</loc>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="he" href="https://afula-messianic.org/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://afula-messianic.org/en" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://afula-messianic.org/ru" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://afula-messianic.org/es" />
+  </url>
+  <url>
+    <loc>https://afula-messianic.org/ru</loc>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="he" href="https://afula-messianic.org/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://afula-messianic.org/en" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://afula-messianic.org/ru" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://afula-messianic.org/es" />
+  </url>
+  <url>
+    <loc>https://afula-messianic.org/es</loc>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="he" href="https://afula-messianic.org/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://afula-messianic.org/en" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://afula-messianic.org/ru" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://afula-messianic.org/es" />
+  </url>
+
+  <url>
+    <loc>https://afula-messianic.org/who-we-are</loc>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="he" href="https://afula-messianic.org/who-we-are" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://afula-messianic.org/en/who-we-are" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://afula-messianic.org/ru/who-we-are" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://afula-messianic.org/es/who-we-are" />
+  </url>
+  <url>
+    <loc>https://afula-messianic.org/en/who-we-are</loc>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="he" href="https://afula-messianic.org/who-we-are" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://afula-messianic.org/en/who-we-are" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://afula-messianic.org/ru/who-we-are" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://afula-messianic.org/es/who-we-are" />
+  </url>
+  <url>
+    <loc>https://afula-messianic.org/ru/who-we-are</loc>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="he" href="https://afula-messianic.org/who-we-are" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://afula-messianic.org/en/who-we-are" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://afula-messianic.org/ru/who-we-are" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://afula-messianic.org/es/who-we-are" />
+  </url>
+  <url>
+    <loc>https://afula-messianic.org/es/who-we-are</loc>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="he" href="https://afula-messianic.org/who-we-are" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://afula-messianic.org/en/who-we-are" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://afula-messianic.org/ru/who-we-are" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://afula-messianic.org/es/who-we-are" />
+  </url>
+
+  <url>
+    <loc>https://afula-messianic.org/contact</loc>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="he" href="https://afula-messianic.org/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://afula-messianic.org/en/contact" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://afula-messianic.org/ru/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://afula-messianic.org/es/contact" />
+  </url>
+  <url>
+    <loc>https://afula-messianic.org/en/contact</loc>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="he" href="https://afula-messianic.org/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://afula-messianic.org/en/contact" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://afula-messianic.org/ru/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://afula-messianic.org/es/contact" />
+  </url>
+  <url>
+    <loc>https://afula-messianic.org/ru/contact</loc>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="he" href="https://afula-messianic.org/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://afula-messianic.org/en/contact" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://afula-messianic.org/ru/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://afula-messianic.org/es/contact" />
+  </url>
+  <url>
+    <loc>https://afula-messianic.org/es/contact</loc>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="he" href="https://afula-messianic.org/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://afula-messianic.org/en/contact" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://afula-messianic.org/ru/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://afula-messianic.org/es/contact" />
+  </url>
+
+  <url>
+    <loc>https://afula-messianic.org/about-jesus</loc>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="he" href="https://afula-messianic.org/about-jesus" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://afula-messianic.org/en/about-jesus" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://afula-messianic.org/ru/about-jesus" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://afula-messianic.org/es/about-jesus" />
+  </url>
+  <url>
+    <loc>https://afula-messianic.org/en/about-jesus</loc>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="he" href="https://afula-messianic.org/about-jesus" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://afula-messianic.org/en/about-jesus" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://afula-messianic.org/ru/about-jesus" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://afula-messianic.org/es/about-jesus" />
+  </url>
+  <url>
+    <loc>https://afula-messianic.org/ru/about-jesus</loc>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="he" href="https://afula-messianic.org/about-jesus" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://afula-messianic.org/en/about-jesus" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://afula-messianic.org/ru/about-jesus" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://afula-messianic.org/es/about-jesus" />
+  </url>
+  <url>
+    <loc>https://afula-messianic.org/es/about-jesus</loc>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="he" href="https://afula-messianic.org/about-jesus" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://afula-messianic.org/en/about-jesus" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://afula-messianic.org/ru/about-jesus" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://afula-messianic.org/es/about-jesus" />
+  </url>
+
+</urlset>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useLang } from '../context/LangContext'
+import { localizedPath } from '../utils/lang'
 
 function CookieBanner() {
   const [visible, setVisible] = useState(false)
@@ -53,7 +54,7 @@ function CookieBanner() {
     }}>
       <p style={{ color: '#d4c4a0', fontSize: '0.9rem', maxWidth: '700px', margin: 0 }}>
         {T.text}{' '}
-        <Link to="/legal" style={{ color: '#c9a84c' }}>{T.more}</Link>
+        <Link to={localizedPath('/legal', lang)} style={{ color: '#c9a84c' }}>{T.more}</Link>
       </p>
       <button onClick={accept} style={{
         background: '#8a6a1f', border: 'none', borderRadius: '6px',

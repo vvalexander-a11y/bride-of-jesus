@@ -21,11 +21,13 @@
     <meta property="og:locale:alternate" content="en_US" />
     <meta property="og:locale:alternate" content="es_ES" />
 
-    <!-- Языки -->
-    <link rel="alternate" hreflang="he" href="https://afula-messianic.org/" />
-    <link rel="alternate" hreflang="ru" href="https://afula-messianic.org/" />
-    <link rel="alternate" hreflang="en" href="https://afula-messianic.org/" />
-    <link rel="alternate" hreflang="es" href="https://afula-messianic.org/" />
+    <!-- Языки (базовый fallback на корни; точный per-страничный hreflang
+         подставляется в рантайме через LangContext.jsx для каждого маршрута —
+         data-hreflang нужен, чтобы рантайм обновлял эти же теги, а не дублировал их) -->
+    <link rel="alternate" hreflang="he" href="https://afula-messianic.org/" data-hreflang="he" />
+    <link rel="alternate" hreflang="ru" href="https://afula-messianic.org/ru" data-hreflang="ru" />
+    <link rel="alternate" hreflang="en" href="https://afula-messianic.org/en" data-hreflang="en" />
+    <link rel="alternate" hreflang="es" href="https://afula-messianic.org/es" data-hreflang="es" />
   </head>
   <body>
     <div id="root"></div>

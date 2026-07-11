@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useLang } from '../context/LangContext'
+import { localizedPath } from '../utils/lang'
 
 function Footer() {
   const { lang } = useLang()
@@ -20,7 +21,7 @@ function Footer() {
       fontSize: '13px', borderTop: '1px solid #3d2b0d'
     }}>
       <div style={{ marginBottom: '8px' }}>{T.rights}</div>
-      <Link to="/legal" style={{ color: '#c9a84c', textDecoration: 'none', fontSize: '12px' }}>
+      <Link to={localizedPath('/legal', lang)} style={{ color: '#c9a84c', textDecoration: 'none', fontSize: '12px' }}>
         ♿ {T.legal}
       </Link>
     </footer>

@@ -1,5 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 import axios from 'axios'
 import './index.css'
 import App from './App.jsx'
@@ -9,8 +10,10 @@ axios.defaults.baseURL = window.location.origin
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <LangProvider>
-      <App />
-    </LangProvider>
+    <BrowserRouter>
+      <LangProvider>
+        <App />
+      </LangProvider>
+    </BrowserRouter>
   </StrictMode>,
 )

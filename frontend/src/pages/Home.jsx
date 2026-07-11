@@ -3,16 +3,8 @@ import axios from 'axios'
 import { useLang } from '../context/LangContext'
 
 function Home() {
-  const { lang, setLang } = useLang()
+  const { lang } = useLang()
   const [verse, setVerse] = useState(null)
-
-  useEffect(() => {
-    const browserLang = navigator.language.slice(0, 2)
-    if (browserLang === 'ru') setLang('ru')
-    else if (browserLang === 'he') setLang('he')
-    else if (browserLang === 'es') setLang('es')
-    else setLang('en')
-  }, [])
 
   useEffect(() => {
     axios.get('/api/daily-verse/')

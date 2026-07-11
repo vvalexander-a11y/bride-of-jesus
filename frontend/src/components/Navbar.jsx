@@ -1,9 +1,12 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useLang } from '../context/LangContext'
+import { localizedPath } from '../utils/lang'
 import { useState, useEffect } from 'react'
 
 function Navbar() {
   const { lang, setLang } = useLang()
+  const location = useLocation()
+  const isMemberRoute = location.pathname === '/login' || location.pathname.startsWith('/events')
   const [visible, setVisible] = useState(true)
   const [lastScroll, setLastScroll] = useState(0)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -31,6 +34,8 @@ function Navbar() {
   const linkStyle = { color: '#f5f0e8', textDecoration: 'none', fontSize: '1.05rem' }
   const mobileLinkStyle = { color: '#f5f0e8', textDecoration: 'none', fontSize: '1.2rem', padding: '0.8rem 0', borderBottom: '1px solid #3d2b0d', display: 'block' }
 
+  const langOptions = isMemberRoute ? ['en', 'ru', 'he'] : ['en', 'ru', 'he', 'es']
+
   return (
     <>
       <nav style={{
@@ -41,23 +46,24 @@ function Navbar() {
         borderBottom: '1px solid #3d2b0d',
         transform: visible ? 'translateY(0)' : 'translateY(-100%)',
         transition: 'transform 0.3s ease',
+        direction: 'ltr',
       }}>
-        <Link to="/" onClick={() => window.scrollTo(0, 0)} style={{ fontFamily: 'serif', fontSize: '1.5rem', color: '#c9a84c', textDecoration: 'none' }}>
+        <Link to={localizedPath('/', lang)} onClick={() => window.scrollTo(0, 0)} style={{ fontFamily: 'serif', fontSize: '1.5rem', color: '#c9a84c', textDecoration: 'none' }}>
           Bride of Jesus
         </Link>
 
         <div className="desktop-menu" style={{ display: 'flex', gap: '1.4rem' }}>
-          <Link to="/" style={linkStyle}>{t.home}</Link>
-          <Link to="/who-we-are" style={linkStyle}>{t.whoweare}</Link>
-          <Link to="/leadership" style={linkStyle}>{t.leadership}</Link>
-          <Link to="/contact" style={linkStyle}>{t.contact}</Link>
-          <Link to="/about-jesus" style={linkStyle}>{t.jesus}</Link>
+          <Link to={localizedPath('/', lang)} style={linkStyle}>{t.home}</Link>
+          <Link to={localizedPath('/who-we-are', lang)} style={linkStyle}>{t.whoweare}</Link>
+          <Link to={localizedPath('/leadership', lang)} style={linkStyle}>{t.leadership}</Link>
+          <Link to={localizedPath('/contact', lang)} style={linkStyle}>{t.contact}</Link>
+          <Link to={localizedPath('/about-jesus', lang)} style={linkStyle}>{t.jesus}</Link>
           <Link to="/login" style={{ ...linkStyle, color: '#c9a84c' }}>{t.members}</Link>
         </div>
 
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
           <div style={{ display: 'flex', gap: '4px' }}>
-            {['en', 'ru', 'he', 'es'].map(l => (
+            {langOptions.map(l => (
               <button key={l} onClick={() => setLang(l)} style={{
                 background: lang === l ? '#8a6a1f' : 'transparent',
                 border: '1px solid #8a6a1f', color: '#e8cc7a',
@@ -86,12 +92,13 @@ function Navbar() {
           borderBottom: '1px solid #3d2b0d',
           transform: visible ? 'translateY(0)' : 'translateY(-200%)',
           transition: 'transform 0.3s ease',
+          direction: 'ltr',
         }}>
-          <Link to="/" style={mobileLinkStyle} onClick={() => setMenuOpen(false)}>{t.home}</Link>
-          <Link to="/who-we-are" style={mobileLinkStyle} onClick={() => setMenuOpen(false)}>{t.whoweare}</Link>
-          <Link to="/leadership" style={mobileLinkStyle} onClick={() => setMenuOpen(false)}>{t.leadership}</Link>
-          <Link to="/contact" style={mobileLinkStyle} onClick={() => setMenuOpen(false)}>{t.contact}</Link>
-          <Link to="/about-jesus" style={mobileLinkStyle} onClick={() => setMenuOpen(false)}>{t.jesus}</Link>
+          <Link to={localizedPath('/', lang)} style={mobileLinkStyle} onClick={() => setMenuOpen(false)}>{t.home}</Link>
+          <Link to={localizedPath('/who-we-are', lang)} style={mobileLinkStyle} onClick={() => setMenuOpen(false)}>{t.whoweare}</Link>
+          <Link to={localizedPath('/leadership', lang)} style={mobileLinkStyle} onClick={() => setMenuOpen(false)}>{t.leadership}</Link>
+          <Link to={localizedPath('/contact', lang)} style={mobileLinkStyle} onClick={() => setMenuOpen(false)}>{t.contact}</Link>
+          <Link to={localizedPath('/about-jesus', lang)} style={mobileLinkStyle} onClick={() => setMenuOpen(false)}>{t.jesus}</Link>
           <Link to="/login" style={{ ...mobileLinkStyle, color: '#c9a84c', border: 'none' }} onClick={() => setMenuOpen(false)}>{t.members}</Link>
         </div>
       )}

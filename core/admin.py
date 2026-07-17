@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article, Link, GalleryAccessRequest, Photo, Album, DailyVerse, FAQ, Talent, LeadershipPhoto
+from .models import Article, Link, GalleryAccessRequest, Photo, Album, DailyVerse, FAQ, Talent, LeadershipPhoto, SiteSettings
 
 
 @admin.register(Article)
@@ -67,4 +67,19 @@ class TalentAdmin(admin.ModelAdmin):
 @admin.register(LeadershipPhoto)
 class LeadershipPhotoAdmin(admin.ModelAdmin):
     list_display = ['__str__', 'is_active', 'created_at']
-    list_editable = ['is_active']   
+    list_editable = ['is_active']
+
+
+@admin.register(SiteSettings)
+class SiteSettingsAdmin(admin.ModelAdmin):
+    fieldsets = (
+        ('Contact', {'fields': ('email', 'phone', 'phone_display', 'whatsapp_number')}),
+        ('Address', {'fields': ('address_en', 'address_ru', 'address_he', 'address_es')}),
+        ('Service Hours', {'fields': ('service_hours_en', 'service_hours_ru', 'service_hours_he', 'service_hours_es')}),
+    )
+
+    def has_add_permission(self, request):
+        return not SiteSettings.objects.exists()
+
+    def has_delete_permission(self, request, obj=None):
+        return False

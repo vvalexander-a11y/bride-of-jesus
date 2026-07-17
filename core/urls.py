@@ -2,7 +2,8 @@ from django.urls import path
 from .views import (
     ArticleListView, LinkListView, CheckPasswordView,
     RequestGalleryAccessView, CheckGalleryAccessView, PhotoListView,
-    DailyVerseView, FAQListView, TalentListView, LeadershipPhotoView
+    DailyVerseView, FAQListView, TalentListView, LeadershipPhotoView,
+    SiteSettingsView
 )
 
 urlpatterns = [
@@ -16,4 +17,5 @@ urlpatterns = [
     path('faq/', FAQListView.as_view()),
     path('talents/', TalentListView.as_view()),
     path('leadership-photo/', LeadershipPhotoView.as_view()),
+    path('site-settings/', SiteSettingsView.as_view()),
 ]

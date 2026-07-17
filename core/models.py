@@ -174,4 +174,32 @@ class LeadershipPhoto(models.Model):
                 img = img.convert('RGB')
             max_size = (1600, 1600)
             img.thumbnail(max_size, Image.LANCZOS)
-            img.save(img_path, 'JPEG', quality=88, optimize=True)            
+            img.save(img_path, 'JPEG', quality=88, optimize=True)
+
+
+class SiteSettings(models.Model):
+    email = models.EmailField()
+    phone = models.CharField(max_length=32, help_text='Canonical format for tel: links, e.g. +972552998715')
+    phone_display = models.CharField(max_length=32, help_text='Display format, e.g. 055-299-8715')
+    whatsapp_number = models.CharField(max_length=32, help_text='Digits only for wa.me links, e.g. 972552998715')
+
+    address_en = models.CharField(max_length=255, blank=True)
+    address_ru = models.CharField(max_length=255, blank=True)
+    address_he = models.CharField(max_length=255, blank=True)
+    address_es = models.CharField(max_length=255, blank=True)
+
+    service_hours_en = models.CharField(max_length=255, blank=True)
+    service_hours_ru = models.CharField(max_length=255, blank=True)
+    service_hours_he = models.CharField(max_length=255, blank=True)
+    service_hours_es = models.CharField(max_length=255, blank=True)
+
+    def __str__(self):
+        return 'Site Settings'
+
+    def save(self, *args, **kwargs):
+        self.pk = 1
+        super().save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = 'Site Settings'
+        verbose_name_plural = 'Site Settings'

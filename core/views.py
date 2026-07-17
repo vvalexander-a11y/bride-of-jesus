@@ -1,11 +1,12 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.permissions import AllowAny
 from django.conf import settings
 from django.core import signing
 from django.core.cache import cache
 from django.db.models import Q
 import secrets
-from .models import Article, Link, GalleryAccessRequest, Photo, DailyVerse, FAQ, Talent, LeadershipPhoto
+from .models import Article, Link, GalleryAccessRequest, Photo, DailyVerse, FAQ, Talent, LeadershipPhoto, SiteSettings
 
 
 class ArticleListView(APIView):
@@ -189,4 +190,27 @@ class LeadershipPhotoView(APIView):
             return Response(None)
         return Response({
             'image': request.build_absolute_uri(photo.image.url)
-        })    
+        })
+
+
+class SiteSettingsView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request):
+        s = SiteSettings.objects.first()
+        if not s:
+            return Response(None)
+        return Response({
+            'email': s.email,
+            'phone': s.phone,
+            'phone_display': s.phone_display,
+            'whatsapp_number': s.whatsapp_number,
+            'address_en': s.address_en,
+            'address_ru': s.address_ru,
+            'address_he': s.address_he,
+            'address_es': s.address_es,
+            'service_hours_en': s.service_hours_en,
+            'service_hours_ru': s.service_hours_ru,
+            'service_hours_he': s.service_hours_he,
+            'service_hours_es': s.service_hours_es,
+        })

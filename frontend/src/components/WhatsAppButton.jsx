@@ -1,7 +1,9 @@
 import { useLang } from '../context/LangContext'
+import { useSiteSettings } from '../context/SiteSettingsContext'
 
 function WhatsAppButton() {
   const { lang } = useLang()
+  const { whatsapp_number } = useSiteSettings()
 
   const message = {
     en: 'Hello! I would like to know more about the congregation.',
@@ -10,10 +12,9 @@ function WhatsAppButton() {
     es: '¡Hola! Me gustaría saber más sobre la congregación.',
   }
 
-  const phone = '972552998715'
   const url =
     'https://wa.me/' +
-    phone +
+    whatsapp_number +
     '?text=' +
     encodeURIComponent(message[lang] || message.en)
 

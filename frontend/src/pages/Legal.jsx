@@ -1,7 +1,9 @@
 import { useLang } from '../context/LangContext'
+import { useSiteSettings } from '../context/SiteSettingsContext'
 
 function Legal() {
   const { lang } = useLang()
+  const { email, phone_display } = useSiteSettings()
 
   const t = {
     en: {
@@ -22,7 +24,7 @@ function Legal() {
       photosText: 'Photos of congregation members are published only in the restricted members section, accessible only to approved members. If you wish to have your photo removed, please contact us.',
 
       contactTitle: 'Contact',
-      contactText: 'For any privacy-related request, please contact us at: info@afula-messianic.org or by phone: 055-299-8715.',
+      contactText: (email, phone) => `For any privacy-related request, please contact us at: ${email} or by phone: ${phone}.`,
 
       accessTitle: 'Accessibility Statement',
       accessText: 'The Bride of Jesus congregation is committed to making its website accessible to all people, including those with disabilities, in accordance with the Israeli Equal Rights for Persons with Disabilities Law, 5758-1998, and Israeli Standard 5568.',
@@ -34,7 +36,7 @@ function Legal() {
       feature4: 'Color contrast meets accessibility standards',
       feature5: 'The site is compatible with screen readers',
 
-      accessContact: 'If you encounter any accessibility issue, please contact us at info@afula-messianic.org and we will do our best to assist.',
+      accessContact: (email) => `If you encounter any accessibility issue, please contact us at ${email} and we will do our best to assist.`,
 
       accessLevel: 'Current accessibility level: Partial compliance with Israeli Standard 5568 (AA level). We are continuously working to improve.',
     },
@@ -56,7 +58,7 @@ function Legal() {
       photosText: 'Фотографии членов общины публикуются только в закрытом разделе, доступном только одобренным членам. Если вы хотите удалить своё фото, свяжитесь с нами.',
 
       contactTitle: 'Контакты',
-      contactText: 'По любым вопросам, связанным с конфиденциальностью, свяжитесь с нами: info@afula-messianic.org или по телефону: 055-299-8715.',
+      contactText: (email, phone) => `По любым вопросам, связанным с конфиденциальностью, свяжитесь с нами: ${email} или по телефону: ${phone}.`,
 
       accessTitle: 'Заявление о доступности',
       accessText: 'Община "Невеста Иисуса" обязуется сделать свой сайт доступным для всех людей, включая людей с ограниченными возможностями, в соответствии с израильским Законом о равных правах для людей с ограниченными возможностями 5758-1998 и израильским стандартом 5568.',
@@ -68,7 +70,7 @@ function Legal() {
       feature4: 'Контрастность цветов соответствует стандартам доступности',
       feature5: 'Сайт совместим с программами для чтения с экрана',
 
-      accessContact: 'Если вы столкнулись с проблемой доступности, свяжитесь с нами по адресу info@afula-messianic.org и мы постараемся помочь.',
+      accessContact: (email) => `Если вы столкнулись с проблемой доступности, свяжитесь с нами по адресу ${email} и мы постараемся помочь.`,
 
       accessLevel: 'Текущий уровень доступности: частичное соответствие израильскому стандарту 5568 (уровень AA). Мы постоянно работаем над улучшением.',
     },
@@ -90,7 +92,7 @@ function Legal() {
       photosText: 'תמונות של חברי הקהילה מפורסמות רק באזור הסגור לחברים, הנגיש רק לחברים מאושרים. אם ברצונך להסיר את תמונתך, אנא צור קשר.',
 
       contactTitle: 'יצירת קשר',
-      contactText: 'לכל פנייה הקשורה לפרטיות, אנא צור קשר: info@afula-messianic.org או בטלפון: 055-299-8715.',
+      contactText: (email, phone) => `לכל פנייה הקשורה לפרטיות, אנא צור קשר: ${email} או בטלפון: ${phone}.`,
 
       accessTitle: 'הצהרת נגישות',
       accessText: 'קהילת כלת ישוע מחויבת להנגיש את אתרה לכלל האנשים, לרבות אנשים עם מוגבלויות, בהתאם לחוק שוויון זכויות לאנשים עם מוגבלות, התשנ"ח-1998, ותקן ישראלי 5568.',
@@ -102,7 +104,7 @@ function Legal() {
       feature4: 'ניגודיות הצבעים עומדת בתקני הנגישות',
       feature5: 'האתר תואם לתוכנות קריאת מסך',
 
-      accessContact: 'אם נתקלת בבעיית נגישות, אנא פנה אלינו בכתובת info@afula-messianic.org ונעשה כמיטב יכולתנו לסייע.',
+      accessContact: (email) => `אם נתקלת בבעיית נגישות, אנא פנה אלינו בכתובת ${email} ונעשה כמיטב יכולתנו לסייע.`,
 
       accessLevel: 'רמת נגישות נוכחית: תאימות חלקית לתקן ישראלי 5568 (רמה AA). אנו עובדים באופן מתמיד על שיפור.',
     },
@@ -124,7 +126,7 @@ function Legal() {
       photosText: 'Las fotos de los miembros de la congregación se publican únicamente en la sección restringida de miembros, accesible solo para miembros aprobados. Si deseas que se elimine tu foto, contáctanos.',
 
       contactTitle: 'Contacto',
-      contactText: 'Para cualquier solicitud relacionada con la privacidad, contáctanos en: info@afula-messianic.org o por teléfono: 055-299-8715.',
+      contactText: (email, phone) => `Para cualquier solicitud relacionada con la privacidad, contáctanos en: ${email} o por teléfono: ${phone}.`,
 
       accessTitle: 'Declaración de Accesibilidad',
       accessText: 'La congregación Novia de Jesús se compromete a hacer que su sitio web sea accesible para todas las personas, incluidas las personas con discapacidad, de acuerdo con la Ley Israelí de Igualdad de Derechos para Personas con Discapacidad, 5758-1998, y el Estándar Israelí 5568.',
@@ -136,7 +138,7 @@ function Legal() {
       feature4: 'El contraste de colores cumple con los estándares de accesibilidad',
       feature5: 'El sitio es compatible con lectores de pantalla',
 
-      accessContact: 'Si encuentras algún problema de accesibilidad, contáctanos en info@afula-messianic.org y haremos lo posible por ayudarte.',
+      accessContact: (email) => `Si encuentras algún problema de accesibilidad, contáctanos en ${email} y haremos lo posible por ayudarte.`,
 
       accessLevel: 'Nivel de accesibilidad actual: cumplimiento parcial del Estándar Israelí 5568 (nivel AA). Trabajamos continuamente para mejorar.',
     },
@@ -182,7 +184,7 @@ function Legal() {
         <p style={pStyle}>{T.photosText}</p>
 
         <h3 style={{ color: '#e8cc7a', marginBottom: '0.5rem', marginTop: '1.5rem' }}>{T.contactTitle}</h3>
-        <p style={pStyle}>{T.contactText}</p>
+        <p style={pStyle}>{T.contactText(email, phone_display)}</p>
       </div>
 
       {/* Accessibility */}
@@ -199,7 +201,7 @@ function Legal() {
           <li>{T.feature5}</li>
         </ul>
 
-        <p style={{ ...pStyle, marginTop: '1.5rem' }}>{T.accessContact}</p>
+        <p style={{ ...pStyle, marginTop: '1.5rem' }}>{T.accessContact(email)}</p>
         <p style={{ ...pStyle, fontStyle: 'italic', color: '#8a6a1f' }}>{T.accessLevel}</p>
       </div>
     </div>

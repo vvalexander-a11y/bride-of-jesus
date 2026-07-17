@@ -1,15 +1,16 @@
 import { useLang } from '../context/LangContext'
+import { useSiteSettings } from '../context/SiteSettingsContext'
 
 function Contact() {
   const { lang } = useLang()
   const isHe = lang === 'he'
+  const settings = useSiteSettings()
 
   const t = {
     en: {
       label: "Get in Touch",
       title: "We'd love to hear from you",
       contactDetails: "Contact Details",
-      meetings: "Meetings usually on Saturday mornings",
       wantToVisit: "Want to visit us?",
       visitText: "We'd love to welcome you! Reach out by phone or WhatsApp and we'll share all the details with you personally.",
     },
@@ -17,7 +18,6 @@ function Contact() {
       label: "Связаться",
       title: "Мы рады услышать вас",
       contactDetails: "Контакты",
-      meetings: "Собрания обычно в субботу утром",
       wantToVisit: "Хотите посетить нас?",
       visitText: "Мы будем рады видеть вас! Свяжитесь с нами по телефону или WhatsApp, и мы расскажем все детали лично.",
     },
@@ -25,7 +25,6 @@ function Contact() {
       label: "צרו קשר",
       title: "נשמח לשמוע מכם",
       contactDetails: "פרטי קשר",
-      meetings: "מפגשים בדרך כלל בשבת בבוקר",
       wantToVisit: "רוצים לבקר אותנו?",
       visitText: "נשמח לארח אתכם! צרו קשר בטלפון או בוואטסאפ ונשתף אתכם בכל הפרטים באופן אישי.",
     },
@@ -33,13 +32,13 @@ function Contact() {
       label: "Contacto",
       title: "Nos encantaría saber de ti",
       contactDetails: "Datos de Contacto",
-      meetings: "Los encuentros suelen ser los sábados por la mañana",
       wantToVisit: "¿Quieres visitarnos?",
       visitText: "¡Nos encantaría darte la bienvenida! Escríbenos por teléfono o WhatsApp y te compartiremos todos los detalles personalmente.",
     }
   }
 
   const T = t[lang]
+  const meetings = settings['service_hours_' + lang] || settings.service_hours_en
 
   return (
     <div style={{ minHeight: '100vh', background: '#ffffff', color: '#2a1e08' }} dir={isHe ? 'rtl' : 'ltr'}>
@@ -76,12 +75,12 @@ function Contact() {
             <div>
               <h3 style={{ fontFamily: 'Playfair Display, serif', color: '#3d2b0d', marginBottom: '16px', fontSize: '1.2rem' }}>{T.contactDetails}</h3>
               <p style={{ marginBottom: '10px', color: '#5a4020', fontSize: '16px' }}>
-                📞 <a href="tel:+972552998715" style={{ color: '#8a6a1f' }}>055-299-8715</a>
+                📞 <a href={`tel:${settings.phone}`} style={{ color: '#8a6a1f' }}>{settings.phone_display}</a>
               </p>
               <p style={{ marginBottom: '10px', color: '#5a4020', fontSize: '16px' }}>
-                ✉️ <a href="mailto:info.meshichit.afula@israelmail.com" style={{ color: '#8a6a1f' }}>info.meshichit.afula@israelmail.com</a>
+                ✉️ <a href={`mailto:${settings.email}`} style={{ color: '#8a6a1f' }}>{settings.email}</a>
               </p>
-              <p style={{ marginTop: '16px', color: '#8a6a1f', fontSize: '13px' }}>{T.meetings}</p>
+              <p style={{ marginTop: '16px', color: '#8a6a1f', fontSize: '13px' }}>{meetings}</p>
             </div>
 
             <div className="hover-lift" style={{

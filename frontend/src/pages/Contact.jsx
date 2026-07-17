@@ -79,7 +79,7 @@ function Contact() {
                 📞 <a href="tel:+972552998715" style={{ color: '#8a6a1f' }}>055-299-8715</a>
               </p>
               <p style={{ marginBottom: '10px', color: '#5a4020', fontSize: '16px' }}>
-                ✉️ <a href="mailto:info.meshichit.afuka@israelmail.com" style={{ color: '#8a6a1f' }}>info.meshichit.afuka@israelmail.com</a>
+                ✉️ <a href="mailto:info.meshichit.afula@israelmail.com" style={{ color: '#8a6a1f' }}>info.meshichit.afula@israelmail.com</a>
               </p>
               <p style={{ marginTop: '16px', color: '#8a6a1f', fontSize: '13px' }}>{T.meetings}</p>
             </div>

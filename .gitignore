@@ -14,3 +14,4 @@ frontend/dist/
 # OS / Editor
 .vscode/
 .DS_Store
+*.txt
